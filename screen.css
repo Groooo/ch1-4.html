@@ -1,0 +1,36 @@
+.red-box{
+    border: 2px black solid;
+    width: 500px;
+    height: 500px;
+    position: absolute;
+}
+*{
+    color: #17fc03;
+    background-color: black;
+    font-size: 20px;
+}
+.cursor{
+  animation-name: blink;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+
+}
+.hide{
+    visibility: hidden !important;
+}
+#hacker{
+    display: inline;
+}
+@keyframes blink {
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+
+}
