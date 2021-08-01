@@ -3,7 +3,9 @@ $(function () {
     $('#hacker').html(''); // empty the div
     let i=0;
     $('.cursor2').hide();
-
+    $(document).keydown( function () {
+      $('#mobile').hide();
+    })
     $(document).keydown( function () {
         var key = event.keyCode || event.charCode;
 
@@ -24,7 +26,7 @@ $(function () {
         var c = document.querySelector("#scroll");
         c.scrollIntoView();
         $('#hacker').html(expression.substr(0,i));
-        i+=3;
+        i+=1;
         setTimeout(() => {
             $('.cursor').show();
             $('.cursor2').hide();
