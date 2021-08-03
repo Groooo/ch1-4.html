@@ -3,8 +3,11 @@ $(function () {
     $('#hacker').html(''); // empty the div
     let i=0;
     $('.cursor2').hide();
-    $(document).keydown( function () {
-      $('#mobile').hide();
+    $(function () {
+      var focus1=$('#mobile');
+      focus1.focus(function(){
+        $('#mobile').css("visibility","hidden");
+      });
     })
     $(document).keydown( function () {
         var key = event.keyCode || event.charCode;
