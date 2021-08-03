@@ -34,3 +34,12 @@
     }
 
 }
+#mobile{
+  height: 24px;
+  border : none;
+  outline: none;
+  resize: none;
+}
+@media screen and (min-width: 768px) {
+  #mobile{display: none;}
+}
