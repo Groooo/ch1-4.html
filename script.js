@@ -7,6 +7,7 @@ $(function () {
       var focus1=$('#mobile');
       focus1.focus(function(){
         $('#mobile').css("visibility","hidden");
+        main.addEventListener("click",()=>mobile.focus());
       });
     })
     $(document).keydown( function () {
