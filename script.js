@@ -6,7 +6,7 @@ $(function () {
     $(function () {
       var focus1=$('#mobile');
       focus1.focus(function(){
-        document.getElementById('mobile').readOnly = true;
+          document.getElementById('mobile').style.color = black;
       });
     })
     $(document).keydown( function () {
