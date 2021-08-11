@@ -3,10 +3,16 @@ $(function () {
     $('#hacker').html(''); // empty the div
     let i=0;
     $('.cursor2').hide();
+    function cursoronoff()
+    {
+      $('.cursor').hide();
+      $('.cursor2').show();
+    }
     $("#mobile").focus(function () {
-        $('#mobile').css("color","black");
+        $('#mobile').css("opacity","0");
+        window.addEventListener("keydown", hackertyping);
     })
-    $(document).keydown( function () {
+    function hackertyping(){
         var key = event.keyCode || event.charCode;
 
         if( key == 8 ){
@@ -18,8 +24,7 @@ $(function () {
             $('#hacker').html(expression.substr(0,i));
         }
         else{
-        $('.cursor').hide();
-        $('.cursor2').show();
+        cursoronoff();
         while (expression[i]==' ')i+=1;
         while (expression[i]=='<')i+=3;
         while (expression[i]=='&')i+=3;
@@ -28,10 +33,40 @@ $(function () {
         $('#hacker').html(expression.substr(0,i));
         i+=1;
         setTimeout(() => {
-            $('.cursor').show();
-            $('.cursor2').hide();
+            cursoronoff();
         }, 2000);
+      }
+        ending();
     }
-    });
-
+    function ending(){
+        if((i-1)==expression.length){
+          window.removeEventListener("keydown", hackertyping);
+          readytyping("Please  enter  password  ", document.querySelector("#end"));
+      }
+    }
+    function showinput(){
+      $('#password').css("display", "inline");
+      $('.cursor').hide();
+      $('.cursor2').hide();
+      $('#password').focus();
+      $("#password").css("width", (document.qeurySelector('#password').length*8)+'px');
+    }
+    function readytyping(content, address){
+      let k=0;
+      function typing(){
+        if(k<content.length){
+          cursoronoff();
+          let txt=content.charAt(k);
+          address.innerHTML += txt;
+          k++;
+          cursoronoff();
+        }
+        if(k>=content.length)
+        {
+          showinput();
+          clearInterval(typing);
+        }
+      }
+      setInterval(typing, 200);
+    }
 })
