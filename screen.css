@@ -1,17 +1,44 @@
-.red-box{
-    border: 2px black solid;
-    width: 500px;
-    height: 500px;
-    position: absolute;
+body{
+  display: flex;
+  flex-direction: column;
+  align-items : center;
+  margin: 0;
+  background-color: black;
 }
-*{
+h1{
+  margin: 44px;
+  color: red;
+  font-size: 30px;
+}
+#monitor{
     color: #17fc03;
     background-color: black;
     font-size: 20px;
+    width: 836px;
+    height: 542px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    border: 64px solid #202020;
+    position: relative;
+}
+#monitor::-webkit-scrollbar {
+    display: none;
+}
+#credit{
+  display: flex;
+  align-items: center;
+  height: 128px;
+  font-size: 15px;
+  color: white;
 }
 .cursor{
   animation-name: blink;
-  animation-duration: 1s;
+  animation-duration: 0.8s;
   animation-iteration-count: infinite;
   animation-play-state: running;
 
@@ -21,6 +48,7 @@
 }
 #hacker{
     display: inline;
+    margin: 0;
 }
 @keyframes blink {
     0%{
@@ -34,13 +62,27 @@
     }
 
 }
+#password{
+  color: #17fc03;
+  background-color: black;
+  font-size: 20px;
+  outline: none;
+  border: none;
+}
 #mobile{
-  height: 24px;
+  position: absolute;
+  color: #17fc03;
+  background-color: black;
+  font-size: 20px;
+  text-align: center;
+  width: 836px;
+  height: 542px;
   border : none;
   outline: none;
   resize: none;
-  cursor: none;
+  cursor: default;
+  overflow-y: hidden;
 }
-@media screen and (min-width: 768px) {
+/*@media screen and (max-width: 900px) {
   #mobile{display: none;}
-}
+}*/
