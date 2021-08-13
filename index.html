@@ -14,16 +14,113 @@
       <input id="mobile" title="" type="email" value="Click here to begin">
   </div>
     <pre id="hacker">
-#includ&lt;stdio.h&gt;
+#include&lt;stdio.h&gt;
+#include&lt;Windows.h&gt;
+#include&lt;conio.h&gt;
+#define system_BOTTOM_Y 12
+#define c<span class='a'>o</span>nsole_BOTTOM_Y 20
+#define co<span class='a'>n</span>sole_privat<span class='a'>e</span>_X 45
 
-int main()
-{
-  printf("Hello World!\n");
-  return 0;
-}
+void SetConsoleView()
+  {
+      system("mode con:cols=100 lines=25");
+      system("ti<span class='a'>t</span>le <span class='a'>H</span>acking DarkWeb.");
+  }
+
+void G<span class='a'>o</span>toXY(int x, int y)
+  {
+      COORD Pos;
+      Pos.X = 2 * x;
+      Pos.Y = y;
+      SetConsoleC<span class='a'>u</span>rsorPosition(GetStdHandle(<span class='a'>S</span>TD_OUTPUT_H<span class='a'>A</span>NDLE), Pos);
+  }
+
+int GetKeyDown()
+  {
+      if (_kbhit() != 0)
+          {
+              retur<span class='a'>n</span> _getch();
+          }
+      return 0;
+  }
+
+void <span class='a'>D</span>rawsystem(int systemY)
+  {
+      GotoXY(0, systemY);
+      s<span class='a'>t</span>atic bool legFlag = true;
+      if (legFlag)
+          {
+              legFlag = false;
+          }
+      else
+          {
+              printf("W<span class='a'>h</span>at is Essential is Invisible to the Eye.");
+              legFlag = true;
+          }
+  }
+
+void Drawconsole(int consoleX)
+  {
+      GotoXY(consoleX, console_BOTTOM_Y);
+      <span class='a'>p</span>rintf("twinkle");
+      GotoXY(consoleX, console_BOTTOM_Y + 1);
+      printf("spa<span class='a'>r</span>kle");
+      GotoXY(consoleX, console_BOTTOM_Y + 2);
+      pr<span class='a'>i</span>ntf("glitter");
+  }
+
+int <span class='a'>m</span>ain(void)
+  {
+      SetConsol<span class='a'>e</span>View();
+      bool ishacki<span class='a'>n</span>g = false;
+      bool isBottom = tr<span class='a'>u</span>e;
+      const int block = 3;
+
+      int syste<span class='a'>m</span>Y = system_BOTTOM_Y;
+      int consoleX = console_BOTTOM_X;
+
+      while (true)
+          {
+              if (GetKeyDown() == 'z' && is<span class='a'>B</span>ottom)
+                  {
+                      ishacking = true;
+                      isBottom = false;
+                  }
+              if (ishacking)
+                  {
+                      systemY -= block;
+                  }
+              else
+                  {
+                      syst<span class='a'>e</span>mY += block;
+                  }
+              if (systemY >= system_BOTTOM_Y)
+                  {
+                      systemY = system_BOTTOM_Y;
+                      isBottom = t<span class='a'>r</span>ue;
+                  }
+              if (systemY <= 3)
+                  {
+                      ishacking = false;
+                  }
+              consoleX -= 2;
+              if (consoleX <= 0)
+                  {
+                      consoleX = console_BOTTOM_X;
+                  }
+
+              Drawsystem(systemY);
+              Drawconsole(consoleX);
+              Sleep(80);
+              system("cls");
+          }
+      printf("When you get stuck, start over");
+      system("pause");
+      return 0;
+  }
 </pre>
             <span id="end"></span>
-            <input id="password" style="display:none">
+            <input id="password" style="display:none" type="text" onkeyup='check()'/>
             <span class="cursor">|</span>
             <span class="cursor2">|</span>
             <section id="scroll"></section>
