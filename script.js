@@ -3,10 +3,15 @@ $(function () {
     $('#hacker').html(''); // empty the div
     let i=0;
     $('.cursor2').hide();
-    function cursoronoff()
+    function cursoron()
     {
       $('.cursor').hide();
       $('.cursor2').show();
+    }
+    function cursoroff()
+    {
+      $('.cursor').show();
+      $('.cursor2').hide();
     }
     $("#mobile").focus(function () {
         $('#mobile').css("opacity","0");
@@ -14,34 +19,33 @@ $(function () {
     })
     function hackertyping(){
         var key = event.keyCode || event.charCode;
-
-        if( key == 8 ){
-           i-=1;
-            if(i<0)i=0;
-            while (expression[i]==' ')i-=1;
-            while (expression[i]==';')i-=4;
-            while (expression[i]=='>')i-=3;
-            $('#hacker').html(expression.substr(0,i));
-        }
-        else{
-        cursoronoff();
+        cursoron();
         while (expression[i]==' ')i+=1;
-        while (expression[i]=='<')i+=3;
+        while (expression[i]=='<'){
+          if(expression[i+1]=='/')i+=7;
+          else i+=6;
+        }
         while (expression[i]=='&')i+=3;
         var c = document.querySelector("#scroll");
         c.scrollIntoView();
         $('#hacker').html(expression.substr(0,i));
-        i+=1;
+        i+=10;
         setTimeout(() => {
-            cursoronoff();
-        }, 2000);
-      }
+            cursoroff();
+        }, 200);
         ending();
     }
     function ending(){
-        if((i-1)==expression.length){
+        if((i-11)<=expression.length&&expression.length<=(i-1)){
           window.removeEventListener("keydown", hackertyping);
+          $('#mobile').css("display","none");
           readytyping("Please  enter  password  ", document.querySelector("#end"));
+          $('#monitor').scroll(function(){
+            $('.a').css("color","black");
+            setTimeout(function(){
+              $('.a').css("color","#17fc03");
+            }, 20);
+          });
       }
     }
     function showinput(){
@@ -49,17 +53,16 @@ $(function () {
       $('.cursor').hide();
       $('.cursor2').hide();
       $('#password').focus();
-      $("#password").css("width", (document.qeurySelector('#password').length*8)+'px');
     }
     function readytyping(content, address){
       let k=0;
       function typing(){
         if(k<content.length){
-          cursoronoff();
+          cursoron();
           let txt=content.charAt(k);
           address.innerHTML += txt;
           k++;
-          cursoronoff();
+          cursoroff();
         }
         if(k>=content.length)
         {
@@ -70,3 +73,9 @@ $(function () {
       setInterval(typing, 200);
     }
 })
+function check(){
+  const pw = document.getElementById('password').value;
+  if(pw=='7919'){
+    location.href='https://skyp0714.github.io/CH1-1/';
+  }
+}
